@@ -1,20 +1,25 @@
 import random
-print('Let´s create some password!:')
-print('============================\n\n')
 
-hash = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYZ()$%&.*$@'
+print("Let´s create some password!:")
+print("============================\n\n")
 
-number = input('Amount of password/s to generate: ')
+number = input("Amount of password/s to generate: ")
 number = int(number)
 
-length = input('Length of the password/s: ')
+length = input("Length of the password/s: ")
 length = int(length)
 
-print('\nYour password/s: ')
+hash = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYZ()$%&.*$@"
+
+print("\nYour password/s: ")
 
 
-for pwd in range(number):
-    password = ''
-    for c in range(length):
-        password += random.choice(hash)
-    print(password)
+def generate(hash, number, length):
+    for pwd in range(number):
+        password = ""
+        for c in range(length):
+            password += random.choice(hash)
+        print(password)
+        
+        
+generate(hash, number, length)        
