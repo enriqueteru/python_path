@@ -18,14 +18,14 @@ class Bank_account:
         return self.balance
     
     def show_balance(self):
-        print('%s: balance is $%0.2f.' % (self.name, self.balance))
+        print('%s: tu balance global es $%0.2f.' % (self.name, self.balance))
         print()
 
     def show_transactions(self):
         balance = self.startingBalance
-        print('   op       amount     balance')
+        print('   op      Cantidad    Balance  ')
         print('--------  ----------  ----------')
-        print(f"                        {balance*math.pi:.2f} (starting)")
+        print(f"                     {balance*math.pi:.2f} (Inicial)")
         for transaction in self.transactions:
             [op, amount] = transaction
             if op == 'w':
@@ -34,13 +34,13 @@ class Bank_account:
             else:
                 opLabel = 'deposit'
                 balance += amount
-            print('%-8s  %10.2f  %10.2f' % (opLabel, amount, balance))  
+            print('%-8s  %7.2f  %7.2f' % (opLabel, amount, balance))  
         print()
 
 
     def withdrawal(self, amount):
         if amount > self.balance:
-            print("Sorry, you don't have that much!")
+            print("Lo siento, no tienes tanto dinero en tu cuenta")
         else:
             print(amount)
             self.balance = float(
@@ -80,21 +80,21 @@ class Bank_account:
 
 class App:
     def get_operation(self):
-        op = input('Enter d for deposit, w for withdrawal, t for transactions, or q to quit: ')
+        op = input('Escribe d para depositar, w para gastos, t para ver tus transacciones : ')
         if op not in set('qdwt'):
-            print('Invalid operation.  Please try again.')
+            print('Operación no valida, prueba de nuevo.')
             op = None
         return op
 
     def get_amount(self):
         amount = None
         try:
-            value = input('Enter amount: ')
+            value = input('Introduce cantidad: ')
             amount = float(value)
             if amount <= 0:
-                raise Exception('The amount must be positive.')
+                raise Exception('El número debe de ser positivo')
         except ValueError:
-            print('Invalid amount.  Please try again.')
+            print('Cantidad no valida, prueba con un número')
         except Exception as e:
             print(e)
             amount = None
